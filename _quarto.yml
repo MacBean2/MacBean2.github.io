@@ -16,7 +16,7 @@ website:
 
 format:
   html:
-    theme: lumen
+    theme: sandstone
       light: flatly
       dark: darkly
     mainfont: system-ui; 
