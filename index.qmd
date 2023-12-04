@@ -1,5 +1,5 @@
 ---
-title: "YOUR NAME"
+title: "McAndrew Bean"
 about:
   template: trestles  # jolla  trestles  solana  marquee  broadside
   image: img/profile.png
