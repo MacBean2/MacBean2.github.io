@@ -16,9 +16,9 @@ website:
 
 format:
   html:
-    theme: sandstone
-      light: flatly
-      dark: darkly
+    theme: 
+      light: sandstone
+      dark: sandstone
     mainfont: system-ui; 
     highlight-style: atom-one
     css: styles.css
