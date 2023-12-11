@@ -1,8 +1,8 @@
 ---
 title: "McAndrew Bean"
 about:
-  template: broadside  # jolla  trestles  solana  marquee  broadside
-  image: img/profile.png
+  template: jolla  # jolla  trestles  solana  marquee  broadside
+  image: Danl proj pic.png
   image-width: 15em
   image-shape: rounded # rectangle  round  rounded
   
