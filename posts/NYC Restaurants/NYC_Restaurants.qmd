@@ -39,8 +39,7 @@ theme_set(theme_ipsum()+
 ```{r}
 library(tidyverse)
 library(skimr)
-restaurant <- read_csv(
-  'https://bcdanl.github.io/data/DOHMH_NYC_Restaurant_Inspection.csv'
+restaurant <- read_csv('https://bcdanl.github.io/data/DOHMH_NYC_Restaurant_Inspection.csv')
 ```
 
 # Q1a
@@ -55,8 +54,6 @@ summary_stats <- restaurant %>%
     Q3 = quantile(SCORE, 0.75),
     Max = max(SCORE)
   )
-
-
 print(summary_stats)
 
 ```
