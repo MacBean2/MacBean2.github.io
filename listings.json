@@ -2,9 +2,9 @@
   {
     "listing": "/blog-listing.html",
     "items": [
-      "/posts/NFL/NFL.html",
       "/posts/Spotify/Spotify.html",
       "/posts/NYC Restaurants/NYC_Restaurants.html",
+      "/posts/NFL/NFL.html",
       "/posts/Beer Markets/Beer_Markets.html",
       "/posts/welcome/index.html"
     ]
