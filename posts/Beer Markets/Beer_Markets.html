@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Harlow Malloc">
+<meta name="author" content="McAndrew Bean">
 <meta name="dcterms.date" content="2023-10-30">
 
-<title>McAndrew Bean - Post With Code</title>
+<title>McAndrew Bean - Beer_Markets</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -100,7 +100,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -137,9 +137,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Post With Code</h1>
+      <h1 class="title">Beer_Markets</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">news</div>
+                <div class="quarto-category">Beer_Markets</div>
                 <div class="quarto-category">code</div>
                 <div class="quarto-category">analysis</div>
               </div>
@@ -152,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Harlow Malloc </p>
+               <p>McAndrew Bean </p>
             </div>
     </div>
       
@@ -170,22 +170,135 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#q2b" id="toc-q2b" class="nav-link active" data-scroll-target="#q2b">Q2b</a></li>
+  <li><a href="#q2c" id="toc-q2c" class="nav-link" data-scroll-target="#q2c">Q2c</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
-<p>This is a post with executable code.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>beer_mkts <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://bcdanl.github.io/data/beer_markets.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>#Q2a</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>top_markets <span class="ot">&lt;-</span> beer_mkts <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(brand, market) <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_floz =</span> <span class="fu">sum</span>(beer_floz)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(brand, <span class="fu">desc</span>(total_floz)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(brand) <span class="sc">%&gt;%</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>top_markets</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code># A tibble: 25 × 3
+# Groups:   brand [5]
+   brand       market      total_floz
+   &lt;chr&gt;       &lt;chr&gt;            &lt;dbl&gt;
+ 1 BUD LIGHT   PHOENIX         271012
+ 2 BUD LIGHT   TAMPA           171830
+ 3 BUD LIGHT   MIAMI           152990
+ 4 BUD LIGHT   ST. LOUIS       140982
+ 5 BUD LIGHT   CHARLOTTE       136786
+ 6 BUSCH LIGHT RURAL IOWA      184000
+ 7 BUSCH LIGHT HOUSTON         154896
+ 8 BUSCH LIGHT CHICAGO         118916
+ 9 BUSCH LIGHT TAMPA           110680
+10 BUSCH LIGHT MINNEAPOLIS      92992
+# ℹ 15 more rows</code></pre>
+</div>
+</div>
+<section id="q2b" class="level1">
+<h1>Q2b</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>loyal_consumers <span class="ot">&lt;-</span> beer_mkts <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(hh, brand) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">purchased =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(brand) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_hh =</span> <span class="fu">n</span>(),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">fraction =</span> <span class="fu">sum</span>(purchased <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">/</span> total_hh) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(fraction))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>loyal_consumers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 13,202 × 5
+# Groups:   brand [5]
+        hh brand       purchased total_hh fraction
+     &lt;dbl&gt; &lt;chr&gt;           &lt;int&gt;    &lt;int&gt;    &lt;dbl&gt;
+ 1 2000417 COORS LIGHT         8     3045    0.529
+ 2 2000711 COORS LIGHT        13     3045    0.529
+ 3 2001521 COORS LIGHT         3     3045    0.529
+ 4 2001825 COORS LIGHT         1     3045    0.529
+ 5 2001871 COORS LIGHT         1     3045    0.529
+ 6 2001947 COORS LIGHT         5     3045    0.529
+ 7 2001978 COORS LIGHT         1     3045    0.529
+ 8 2002617 COORS LIGHT        24     3045    0.529
+ 9 2002856 COORS LIGHT         2     3045    0.529
+10 2003419 COORS LIGHT         2     3045    0.529
+# ℹ 13,192 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This code calculates the fraction of households purchasing only each beer brand</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>largest_proportion_brand <span class="ot">&lt;-</span> loyal_consumers <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(fraction)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>largest_proportion_brand</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 5
+# Groups:   brand [5]
+       hh brand         purchased total_hh fraction
+    &lt;dbl&gt; &lt;chr&gt;             &lt;int&gt;    &lt;int&gt;    &lt;dbl&gt;
+1 2000235 BUD LIGHT             1     4657    0.499
+2 2001531 BUSCH LIGHT           1     1110    0.457
+3 2000417 COORS LIGHT           8     3045    0.529
+4 2000946 MILLER LITE           1     3195    0.487
+5 2001715 NATURAL LIGHT         1     1195    0.403</code></pre>
+</div>
+</div>
+</section>
+<section id="q2c" class="level1">
+<h1>Q2c</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>household_stats <span class="ot">&lt;-</span> beer_mkts <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(hh) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_transactions =</span> <span class="fu">n</span>(),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">proportion_bud_light =</span> <span class="fu">mean</span>(brand <span class="sc">==</span> <span class="st">"Bud Light"</span>),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">proportion_busch_light =</span> <span class="fu">mean</span>(brand <span class="sc">==</span> <span class="st">"Busch Light"</span>),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">proportion_coors_light =</span> <span class="fu">mean</span>(brand <span class="sc">==</span> <span class="st">"Coors Light"</span>),</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">proportion_miller_lite =</span> <span class="fu">mean</span>(brand <span class="sc">==</span> <span class="st">"Miller Lite"</span>),</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">proportion_natural_light =</span> <span class="fu">mean</span>(brand <span class="sc">==</span> <span class="st">"Natural Light"</span>))</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>household_stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10,408 × 7
+        hh num_transactions proportion_bud_light proportion_busch_light
+     &lt;dbl&gt;            &lt;int&gt;                &lt;dbl&gt;                  &lt;dbl&gt;
+ 1 2000235                1                    0                      0
+ 2 2000417                8                    0                      0
+ 3 2000711               13                    0                      0
+ 4 2000946                2                    0                      0
+ 5 2001521               11                    0                      0
+ 6 2001531                1                    0                      0
+ 7 2001581                5                    0                      0
+ 8 2001582               13                    0                      0
+ 9 2001618                1                    0                      0
+10 2001715                3                    0                      0
+# ℹ 10,398 more rows
+# ℹ 3 more variables: proportion_coors_light &lt;dbl&gt;,
+#   proportion_miller_lite &lt;dbl&gt;, proportion_natural_light &lt;dbl&gt;</code></pre>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script type="text/javascript" src="links.js"></script>
