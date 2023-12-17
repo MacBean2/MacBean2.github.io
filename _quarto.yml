@@ -11,14 +11,16 @@ website:
         href: project.qmd
       - text: Blog
         href: blog-listing.qmd
+      - text: Homework
+      - href: danl200-hw5-bean-mcandrew.qmd
   page-footer: 
     center: "Powered with GitHub and Quarto<br>© McAndrew Bean, 2023"
 
 format:
   html:
     theme: 
-      light: sandstone
-      dark: sandstone
+      light: tango
+      dark: tango
     mainfont: system-ui; 
     highlight-style: atom-one
     css: styles.css
